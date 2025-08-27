@@ -6,7 +6,9 @@ Returns a predefined response. Replace logic and configuration as needed.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, TypedDict
+from typing import Any, Dict
+# To support Python < 3.12 which is used in LangGraph Docker image with langgraph up
+from typing_extensions import TypedDict
 
 from langchain.chat_models import init_chat_model
 from langgraph.graph import StateGraph
