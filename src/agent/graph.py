@@ -8,6 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, TypedDict
 
+from langchain.chat_models import init_chat_model
 from langgraph.graph import StateGraph
 from langgraph.runtime import Runtime
 
@@ -38,9 +39,13 @@ async def call_model(state: State, runtime: Runtime[Context]) -> Dict[str, Any]:
 
     Can use runtime context to alter behavior.
     """
+    print(str(state))
+    # see https://docs.mistral.ai/getting-started/models/models_overview/
+    model=init_chat_model(model="codestral-2508", model_provider="mistralai")
+    res=await model.ainvoke(state.changeme)
     return {
-        "changeme": "output from call_model. "
-        f"Configured with {runtime.context.get('my_configurable_param')}"
+        "changeme": res.content #"output from call_model. "
+        #f"Configured with {runtime.context.get('my_configurable_param')}"
     }
 
 
