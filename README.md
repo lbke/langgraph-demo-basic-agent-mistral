@@ -1,7 +1,20 @@
-# New LangGraph Project
+# Nouveau projet LangGraph + Mistral
+
+
+Ce template est utilisé dans le cadre des formations LBKE à [LangChain et LangGraph](https://www.lbke.fr/formations/developpeur-llm-langgraph-langchain/cpf).
+
+Différence avec le template de base :
+- Connexion avec Mistral déjà prête
+- Version fixée pour le CLI LangGraph (>= 0.6.0 pour accéder à la Runtime)
+- Render.yaml pour faciliter le déploiement d'une instance gratuite
+- Workflows github désactivés par défaut
+
+<!--
 
 [![CI](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/unit-tests.yml)
 [![Integration Tests](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/integration-tests.yml/badge.svg)](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/integration-tests.yml)
+
+-->
 
 This template demonstrates a simple application implemented using [LangGraph](https://github.com/langchain-ai/langgraph), designed for showing how to get started with [LangGraph Server](https://langchain-ai.github.io/langgraph/concepts/langgraph_server/#langgraph-server) and using [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/), a visual debugging IDE.
 

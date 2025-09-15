@@ -1,0 +1,12 @@
+# https://www.lbke.fr/ressources/deployer-langchain-langgraph-sur-render
+# https://render.com/docs/blueprint-spec
+name: langgraph-dev
+type: web
+runtime: python
+plan: free
+buildCommand: pip install . "langgraph-cli[inmem]"
+startCommand: langgraph dev --port $PORT --host 0.0.0.0 --no-browser
+# https://render.com/docs/blueprint-spec#setting-environment-variables
+envVars:
+  - key: MISTRAL_API_KEY
+    sync: false
