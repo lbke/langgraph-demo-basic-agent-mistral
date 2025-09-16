@@ -1,7 +1,9 @@
 {
   "dependencies": ["."],
   "graphs": {
-    "agent": "./src/agent/graph.py:graph"
+    "basique": "./src/agent/graph_basique.py:graph",
+    "injection": "./src/agent/graph_injection.py:graph",
+    "interrupt": "./src/agent/graph_interrupt.py:graph"
   },
   "env": ".env",
   "image_distro": "wolfi"
