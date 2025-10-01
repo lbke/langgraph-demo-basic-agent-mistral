@@ -13,6 +13,8 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "langchain>=0.3.0",
     "langchain-mistralai>=0.2.0",
+    # https://github.com/langchain-ai/react-agent/issues/26
+    "protobuf>=6.3.1",
 ]
 
 
