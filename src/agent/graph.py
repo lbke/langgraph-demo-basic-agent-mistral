@@ -32,8 +32,9 @@ class State:
     Defines the initial structure of incoming data.
     See: https://langchain-ai.github.io/langgraph/concepts/low_level/#state
     """
-
-    changeme: str = "example"
+    last_user_message: str
+    last_ai_message: str = ""
+    message_count: int = 0
 
 
 async def call_model(state: State, runtime: Runtime[Context]) -> Dict[str, Any]:
@@ -43,18 +44,20 @@ async def call_model(state: State, runtime: Runtime[Context]) -> Dict[str, Any]:
     """
     print(str(state))
     # see https://docs.mistral.ai/getting-started/models/models_overview/
-    model=init_chat_model(model="codestral-2508", model_provider="mistralai")
-    res=await model.ainvoke(state.changeme)
+    model = init_chat_model(model="codestral-2508", model_provider="mistralai")
+    res = await model.ainvoke(state.last_user_message)
     return {
-        "changeme": res.content #"output from call_model. "
-        #f"Configured with {runtime.context.get('my_configurable_param')}"
+        "message_count": state.message_count + 1,
+        "last_ai_message": res.content  # "output from call_model. "
+        # f"Configured with {runtime.context.get('my_configurable_param')}"
     }
 
 
 # Define the graph
-graph = (
+builder = (
     StateGraph(State, context_schema=Context)
     .add_node(call_model)
     .add_edge("__start__", "call_model")
-    .compile(name="New Graph")
 )
+
+graph = builder.compile(name="New Graph")
